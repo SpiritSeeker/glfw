@@ -63,6 +63,28 @@ project "GLFW"
 			"_CRT_SECURE_NO_WARNINGS"
 		}
 
+	filter "system:macosx"
+		buildoptions { "-std=c11", "-fPIC" }
+		staticruntime "On"
+
+		files
+		{
+			"src/cocoa_init.m",
+			"src/cocoa_joystick.m",
+			"src/cocoa_monitor.m",
+			"src/cocoa_window.m",
+			"src/cocoa_time.c",
+			"src/nsgl_context.m",
+			"src/glx_context.c",
+			"src/egl_context.c",
+			"src/osmesa_context.c"
+		}
+
+		defines
+		{
+			"_GLFW_COCOA"
+		}
+
 	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"
